@@ -25,5 +25,4 @@ jobs:
           node-version: '20' # Specify the Node.js version you need
 
       - name: Run the JavaScript file
-        # Command to execute the Node.js script
-        run: node my-script.js
+        run: node keepalilve.js
