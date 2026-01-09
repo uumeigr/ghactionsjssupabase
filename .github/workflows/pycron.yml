@@ -4,7 +4,7 @@ on:
   # Schedule the workflow to run every day at 00:00 UTC
   schedule:
     # Use POSIX cron syntax (minute hour day_of_month month day_of_week)
-    - cron: '0 0 * * *'
+    - cron: '0 0 1 * *'
 
   # Allows manual triggering of the workflow from the Actions tab (optional)
   workflow_dispatch:
