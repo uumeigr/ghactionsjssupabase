@@ -1,4 +1,4 @@
-name: Periodic JavaScript Runner
+name: Keep Supabase Alive Javascript by Github Acitions
 
 on:
   schedule:
@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20' # Specify the Node.js version you need
+          # api-key: ${{ secrets.API_KEY_NAME }}
 
       - name: Run the JavaScript file
         run: node keepalilve.js
