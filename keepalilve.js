@@ -1,5 +1,5 @@
 // This script runs in a Node.js environment (like GitHub Actions)
-const fetch = require('node-fetch');
+//const fetch = require('node-fetch');
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
