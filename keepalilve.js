@@ -8,7 +8,7 @@ const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
 async function keepAlive() {
   try {
     // Replace 'your_table_name' with the name of your small keep-alive table
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/your_table_name`, {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/keep_alive_ping`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
