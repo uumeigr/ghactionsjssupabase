@@ -31,7 +31,8 @@ jobs:
         # run: npm install node-fetch
         # After running the command, check your package.json file to ensure node-fetch is listed under dependencies
         # run: npm install
-
+      - run: npm install @supabase/supabase-js
+      
         # api-key: ${{ secrets.API_KEY_NAME }}
         
       - name: Run the JavaScript file
