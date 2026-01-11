@@ -7,7 +7,7 @@ const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
 console.log("The supabase url is: " + SUPABASE_URL);
 console.log("The supabase anon key is: " + SUPABASE_ANON_KEY);
 
-console.log("Breakpoint 1 ----------------------------------------------------------------------- set by J10");
+console.log("Breakpoint -------------------------------------001---------------------------------- set by J10");
 
 //Run node keepalilve.js
 //file:///home/runner/work/ghactionsjssupabase/ghactionsjssupabase/keepalilve.js:12
@@ -19,38 +19,38 @@ console.log("Breakpoint 1 ------------------------------------------------------
 //console.log("The supabase url is: " + SUPABASE_URL_FR_SECRETS);
 //console.log("The supabase anon key is: " + SUPABASE_ANON_KEY_FR_SECRETS);
 
-console.log("Breakpoint 2 ----------------------------------------------------------------------- set by J10");
+console.log("Breakpoint -------------------------------------002------------------------------ set by J10");
 
 // Create a single supabase client for interacting with your database
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
-console.log("Breakpoint 3 ----------------------------------------------------------------------- set by J10");
+console.log("Breakpoint -------------------------------------003------------------------------- set by J10");
 
 
 // Pings an endpoint to keep the project active
 async function keepAlive() {
   try {
-//    const { data, error } = await supabase.from('keep_alive_ping').select();
+    const { data, error } = await supabase.from('keep_alive_ping').select();
 
-//    if (data[status] == 200) {
-//      console.log('Supabase project ping successful. Project is awake.');
-//    } else {
-//      console.error('Supabase project ping failed. Status:', data[status]);
-//    }
+    if (data[status] == 200) {
+      console.log('Supabase project ping successful. Project is awake.');
+    } else {
+      console.error('Supabase project ping failed. Status:', data[status]);
+    }
 
-      const currentDate = new Date();
-      const timestamptz = currentDate.toISOString();
+//      const currentDate = new Date();
+//      const timestamptz = currentDate.toISOString();
 
-      console.log(timestamptz);
+//      console.log(timestamptz);
     
     
 
-      const { error } = await supabase
-        .from('keep_alive_ping')
-        .insert({ id: 2, last_ping: timestamptz });
+ //     const { error } = await supabase
+ //       .from('keep_alive_ping')
+ //       .insert({ id: 2, last_ping: timestamptz });
 
-      console.log("Breakpoint 4 ----------------------------------------------------------------------- set by J10");
-      
+
+      console.log("Breakpoint -------------------------------------004------------------------------- set by J10");
     
   } catch (error) {
     console.error('An error occurred during Supabase keep-alive ping:', error);
