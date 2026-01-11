@@ -9,10 +9,15 @@ console.log("The supabase anon key is: " + SUPABASE_ANON_KEY);
 
 console.log("Breakpoint 1 ----------------------------------------------------------------------- set by J10");
 
-const SUPABASE_URL_FR_SECRETS = ${{ secrets.SUPABASE_URL }};
-const SUPABASE_ANON_KEY_FR_SECRETS = ${{ secrets.SUPABASE_ANON_KEY }};
-console.log("The supabase url is: " + SUPABASE_URL_FR_SECRETS);
-console.log("The supabase anon key is: " + SUPABASE_ANON_KEY_FR_SECRETS);
+//Run node keepalilve.js
+//file:///home/runner/work/ghactionsjssupabase/ghactionsjssupabase/keepalilve.js:12
+//const SUPABASE_URL_FR_SECRETS = ${{ secrets.SUPABASE_URL }};
+//                                 ^
+
+//SyntaxError: Unexpected token '{'
+//const SUPABASE_ANON_KEY_FR_SECRETS = ${{ secrets.SUPABASE_ANON_KEY }};
+//console.log("The supabase url is: " + SUPABASE_URL_FR_SECRETS);
+//console.log("The supabase anon key is: " + SUPABASE_ANON_KEY_FR_SECRETS);
 
 console.log("Breakpoint 2 ----------------------------------------------------------------------- set by J10");
 
