@@ -23,6 +23,9 @@ console.log("Breakpoint -------------------------------------002----------------
 
 // Create a single supabase client for interacting with your database
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+const currentDate = new Date();
+const timestamptz = currentDate.toISOString();
+console.log(timestamptz);
 
 console.log("Breakpoint -------------------------------------003------------------------------- set by J10");
 
