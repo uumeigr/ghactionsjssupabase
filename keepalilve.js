@@ -19,7 +19,7 @@ async function keepAlive() {
 //    if (data[status] == 200) {
 //      console.log('Supabase project ping successful. Project is awake.');
 //    } else {
-//      console.error('Supabase project ping failed. Status:', data.[status]);
+//      console.error('Supabase project ping failed. Status:', data[status]);
 //    }
 
       const currentDate = new Date();
