@@ -35,6 +35,10 @@ async function keepAlive() {
   try {
     const resp = await supabase.from('keep_alive_ping').select().eq('id', 1);
     console.log(resp);
+    //Check the timestamp, select statement and from node in Supabase dashboard /left bar/ Logs, the query is exectued successfully
+    //Breakpoint -------------------------------------002------------------------------ set by J10
+    //2026-01-11T10:31:29.708Z
+    //Breakpoint -------------------------------------003------------------------------- set by J10
     //{ error: null, data: [], count: null, status: 200, statusText: 'OK' }
     
     //const { data, error } = await supabase.from('keep_alive_ping').select();
