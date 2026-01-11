@@ -33,11 +33,9 @@ jobs:
       - run: npm install @supabase/supabase-js
       # run: npm install
       # After running the command, check your package.json file to ensure node-fetch is listed under dependencies
-
-      # api-key: ${{ secrets.API_KEY_NAME }}
         
       - name: Run keepalive.js
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{secrets.SUPABASE_ANON_KEY}}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: node keepalilve.js
