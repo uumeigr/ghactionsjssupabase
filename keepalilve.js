@@ -31,12 +31,15 @@ console.log("Breakpoint -------------------------------------003----------------
 async function keepAlive() {
   try {
     const { data, error } = await supabase.from('keep_alive_ping').select();
+    console.log(data);
 
-    if (data[status] == 200) {
-      console.log('Supabase project ping successful. Project is awake.');
-    } else {
-      console.error('Supabase project ping failed. Status:', data[status]);
-    }
+    //if (data[status] == 200) {
+      //An error occurred during Supabase keep-alive ping: ReferenceError: status is not defined
+      //at keepAlive (file:///home/runner/work/ghactionsjssupabase/ghactionsjssupabase/keepalilve.js:35:14)
+      //console.log('Supabase project ping successful. Project is awake.');
+    //} else {
+    //  console.error('Supabase project ping failed. Status:', data[status]);
+    //}
 
 //      const currentDate = new Date();
 //      const timestamptz = currentDate.toISOString();
