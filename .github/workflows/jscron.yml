@@ -1,11 +1,11 @@
-name: Keep Supabase Alive JS by Gh Acitions
+name: Keep Supabase Alive w GhAcitions & JS
 
 on:
   schedule:
-    # Run every hour at 15 minutes past the hour (e.g., 00:15, 01:15, etc.)
+    # Run every morning at 7:15am NZT | UTC + 8 + 5hrs earlier
     # CRON syntax: minute hour day_of_month month day_of_week
     # For more CRON examples, see the GitHub Actions documentation
-    - cron: '15 18 * * *'
+    - cron: '15 20 * * *'
     
   # Allows manual triggering of the workflow from the GitHub Actions tab
   workflow_dispatch:
@@ -35,5 +35,5 @@ jobs:
       
         # api-key: ${{ secrets.API_KEY_NAME }}
         
-      - name: Run the JavaScript file
+      - name: Run keepalive.js
         run: node keepalilve.js
