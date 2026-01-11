@@ -27,7 +27,7 @@ async function keepAlive() {
 
       const { error } = await supabase
         .from('keep_alive_ping')
-        .insert({ id: 1, last_ping: timestamptz });
+        .insert({ id: 2, last_ping: timestamptz });
     
       console.log(timestamptz);
     
