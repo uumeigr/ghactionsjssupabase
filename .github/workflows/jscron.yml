@@ -26,7 +26,7 @@ jobs:
           node-version: '20' # Specify the Node.js version you need
           
       - run: npm cache clean --force
-      - run: rm package-lock.json
+      # - run: rm package-lock.json
       # or yarn.lock
       # run: rm -rf node_modules
       # run: npm install node-fetch
