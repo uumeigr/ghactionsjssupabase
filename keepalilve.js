@@ -30,8 +30,18 @@ console.log("Breakpoint -------------------------------------003----------------
 // Pings an endpoint to keep the project active
 async function keepAlive() {
   try {
-    const { data, error } = await supabase.from('keep_alive_ping').select();
-    console.log(data);
+    const resp = await supabase.from('keep_alive_ping').select();
+    console.log(resp);
+    
+    //const { data, error } = await supabase.from('keep_alive_ping').select();
+    //console.log(data);
+    //The supabase url is: ***
+    //The supabase anon key is: ***
+    //Breakpoint -------------------------------------001---------------------------------- set by J10
+    //Breakpoint -------------------------------------002------------------------------ set by J10
+    //Breakpoint -------------------------------------003------------------------------- set by J10
+    //[]
+    //Breakpoint -------------------------------------004------------------------------- set by J10
 
     //if (data[status] == 200) {
       //An error occurred during Supabase keep-alive ping: ReferenceError: status is not defined
