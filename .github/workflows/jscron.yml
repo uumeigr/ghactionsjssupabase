@@ -25,15 +25,16 @@ jobs:
         with:
           node-version: '20' # Specify the Node.js version you need
           
-        # Delete the lock file (package-lock.json or yarn.lock)
       - run: npm cache clean --force
-        # run: rm -rf node_modules
-        # run: npm install node-fetch
-        # After running the command, check your package.json file to ensure node-fetch is listed under dependencies
-        # run: npm install
+      - run: rm package-lock.json
+      # or yarn.lock
+      # run: rm -rf node_modules
+      # run: npm install node-fetch
       - run: npm install @supabase/supabase-js
-      
-        # api-key: ${{ secrets.API_KEY_NAME }}
+      # run: npm install
+      # After running the command, check your package.json file to ensure node-fetch is listed under dependencies
+
+      # api-key: ${{ secrets.API_KEY_NAME }}
         
       - name: Run keepalive.js
         run: node keepalilve.js
