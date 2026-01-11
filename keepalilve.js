@@ -14,13 +14,23 @@ const supabase = createClient('SUPABASE_URL', 'SUPABASE_ANON_KEY')
 // Pings an endpoint to keep the project active
 async function keepAlive() {
   try {
-    const { data, error } = await supabase.from('keep_alive_ping').select();
+//    const { data, error } = await supabase.from('keep_alive_ping').select();
 
-    if (data[status] == 200) {
-      console.log('Supabase project ping successful. Project is awake.');
-    } else {
-      console.error('Supabase project ping failed. Status:', data.[status]);
-    }
+//    if (data[status] == 200) {
+//      console.log('Supabase project ping successful. Project is awake.');
+//    } else {
+//      console.error('Supabase project ping failed. Status:', data.[status]);
+//    }
+
+      const currentDate = new Date();
+      const timestamptz = currentDate.toISOString();
+
+      const { error } = await supabase
+        .from('keep_alive_ping')
+        .insert({ id: 1, last_ping: timestamptz });
+    
+      console.log(timestamptz);
+    
   } catch (error) {
     console.error('An error occurred during Supabase keep-alive ping:', error);
   }
