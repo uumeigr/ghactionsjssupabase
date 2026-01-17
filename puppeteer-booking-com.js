@@ -134,6 +134,100 @@ async function sendPriceReport(results) {
   
 }
 
+/ Function to check hotel price for a specific date
+async function checkPrice(browser, checkInDate, checkOutDate) {
+  const page = await browser.newPage();
+  
+  try {
+    // Format dates for URL (YYYY-MM-DD)
+    const checkIn = checkInDate.toISOString().split('T')[0];
+    const checkOut = checkOutDate.toISOString().split('T')[0];
+    
+    const url = `${HOTEL_URL}?checkin=${checkIn}&checkout=${checkOut}&selected_currency=USD`;
+    
+    console.log(`Checking price for ${checkIn}...`);
+    
+    // Set viewport and user agent to appear more like a real browser
+    await page.setViewport({ width: 1920, height: 1080 });
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+    
+    await page.goto(url, { waitUntil: 'networkidle0', timeout: 60000 });
+    
+    // Wait a bit for dynamic content to load
+    await page.waitForTimeout(3000);
+    
+    // Take screenshot for debugging (optional - comment out if not needed)
+    // await page.screenshot({ path: `screenshot-${checkIn}.png` });
+    
+    // Try multiple selector strategies to find the price
+    const priceInfo = await page.evaluate(() => {
+      // Strategy 1: Look for common price class patterns
+      const selectors = [
+        '.prco-valign-middle-helper',
+        '.prco-inline-block-maker-helper',
+        '[data-testid="price-and-discounted-price"]',
+        '.bui-price-display__value',
+        '.prco-text-nowrap-helper',
+        '.e1e3b38b8f', // Booking.com sometimes uses hash classes
+        'span[aria-hidden="true"]',
+        '.fcab3ed991.e729ed5ab6' // Common price wrapper classes
+      ];
+      
+      for (let selector of selectors) {
+        const elements = document.querySelectorAll(selector);
+        for (let el of elements) {
+          const text = el.textContent.trim();
+          // Look for text that contains currency symbols and numbers
+          if (text.match(/(?:US\$|USD|\$|CNY|¥|€|£)\s*[\d,]+/) || text.match(/^[\d,]+$/)) {
+            return text;
+            // jump out the loop when first match found
+          }
+        }
+      }
+      
+      // Strategy 2: Look for any element containing price-like text
+      const allElements = document.querySelectorAll('span, div, b, strong');
+      for (let el of allElements) {
+        const text = el.textContent.trim();
+        // Match patterns like "US$200", "$200", "USD 200"
+        if (text.match(/^(?:US\$|USD)\s*[\d,]+$/)) {
+          return text;
+        }
+      }
+      
+      // Strategy 3: Get all text and find price patterns
+      const bodyText = document.body.innerText;
+      const priceMatches = bodyText.match(/US\$\s*[\d,]+/g);
+      if (priceMatches && priceMatches.length > 0) {
+        return priceMatches[0];
+      }
+      
+      return null;
+    });
+    
+    if (priceInfo) {
+      // Extract numeric value from various formats
+      // Handles: "US$200", "$200", "USD 200", "200", "1,200"
+      const priceMatch = priceInfo.match(/[\d,]+/);
+      if (priceMatch) {
+        const price = parseFloat(priceMatch[0].replace(/,/g, ''));
+        console.log(`  ✓ Price found: USD ${price} (raw: "${priceInfo}")`);
+        return { date: checkIn, price };
+      }
+    }
+    
+    console.log(`  ⚠️ No price found for ${checkIn}`);
+    return { date: checkIn, price: null };
+    
+  } catch (error) {
+    console.error(`  ✗ Error for ${checkInDate.toISOString().split('T')[0]}:`, error.message);
+    return { date: checkInDate.toISOString().split('T')[0], price: null, error: error.message };
+  } finally {
+    await page.close();
+  }
+}
+
+
 
 
 
