@@ -246,7 +246,7 @@ async function monitorHotelPrices() {
   const today = new Date();
   
   try {
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 10; i++) {
       const checkInDate = new Date(today);
       checkInDate.setDate(today.getDate() + i);
       
