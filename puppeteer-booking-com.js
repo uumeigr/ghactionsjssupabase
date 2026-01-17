@@ -1,5 +1,5 @@
 
-import puppeteer from 'puppeteer-core';
+import puppeteer from 'puppeteer';
 //const nodemailer = require('nodemailer');
 import { Resend } from 'resend';
 
