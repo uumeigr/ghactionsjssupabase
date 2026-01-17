@@ -1,0 +1,43 @@
+name: Puppeteer Booking Com IC Shenzhen
+on:[push]
+  #schedule:
+    # Run every morning at 7:15am NZT | UTC + 8 + 5hrs earlier
+    # CRON syntax: minute hour day_of_month month day_of_week
+    # For more CRON examples, see the GitHub Actions documentation
+   # - cron: '15 1 * * *'
+    
+  # Allows manual triggering of the workflow from the GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        # Action to pull the code from the repository into the runner
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        # Action to install the Node.js environment required to run the script
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Specify the Node.js version you need
+          
+      - run: npm cache clean --force
+      # - run: rm package-lock.json
+      # or yarn.lock
+      # run: rm -rf node_modules
+      # run: npm install node-fetch
+      #- run: npm install @supabase/supabase-js
+      - run: npm install puppeteer
+      - run: npm install resend
+      # run: npm install
+      # After running the command, check your package.json file to ensure node-fetch is listed under dependencies
+        
+      - name: Run puppeteer-booking-com.js
+        env:
+          #SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          #SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: node puppeteer-booking-com.js
