@@ -244,7 +244,7 @@ async function monitorHotelPrices() {
   const today = new Date();
   
   try {
-    for (let i = 0; i < 90; i++) {
+    for (let i = 0; i < 1; i++) {
       const checkInDate = new Date(today);
       checkInDate.setDate(today.getDate() + i);
       
@@ -272,9 +272,9 @@ async function monitorHotelPrices() {
   await sendPriceReport(results);
   
   // Save results to file
-  const fs = require('fs');
-  fs.writeFileSync('price-results.json', JSON.stringify(results, null, 2));
-  console.log('💾 Results saved to price-results.json');
+  //const fs = require('fs');
+  //fs.writeFileSync('price-results.json', JSON.stringify(results, null, 2));
+  //console.log('💾 Results saved to price-results.json');
   
   return results;
 }
