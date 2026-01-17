@@ -228,6 +228,67 @@ async function checkPrice(browser, checkInDate, checkOutDate) {
 }
 
 
+/ Main monitoring function
+async function monitorHotelPrices() {
+  console.log('🏨 Starting hotel price monitoring...');
+  console.log(`📍 Hotel: InterContinental Shenzhen WECC by IHG`);
+  console.log(`📅 Monitoring next 90 days`);
+  console.log(`📧 Report will be sent to: ${TARGET_EMAIL}`);
+  console.log('---');
+  
+  const browser = await puppeteer.launch({
+    headless: 'new',
+    args: ['--no-sandbox', '--disable-setuid-sandbox']
+  });
+  
+  const results = [];
+  const today = new Date();
+  
+  try {
+    for (let i = 0; i < 90; i++) {
+      const checkInDate = new Date(today);
+      checkInDate.setDate(today.getDate() + i);
+      
+      const checkOutDate = new Date(checkInDate);
+      checkOutDate.setDate(checkInDate.getDate() + 1); // 1 night stay
+      
+      const result = await checkPrice(browser, checkInDate, checkOutDate);
+      results.push(result);
+      
+      // Add delay between requests to avoid being blocked
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+  } finally {
+    await browser.close();
+  }
+  
+  console.log('---');
+  console.log('✅ Monitoring complete!');
+  console.log(`📊 Checked ${results.length} dates`);
+  
+  const validPrices = results.filter(r => r.price);
+  console.log(`💰 Valid prices found: ${validPrices.length}`);
+  
+  // Send email report
+  await sendPriceReport(results);
+  
+  // Save results to file
+  const fs = require('fs');
+  fs.writeFileSync('price-results.json', JSON.stringify(results, null, 2));
+  console.log('💾 Results saved to price-results.json');
+  
+  return results;
+}
+
+// Run the monitor
+monitorHotelPrices()
+  .then(() => {
+    console.log('\n🎉 All done!');
+  })
+  .catch(error => {
+    console.error('❌ Fatal error:', error);
+    process.exit(1);
+  });
 
 
 
