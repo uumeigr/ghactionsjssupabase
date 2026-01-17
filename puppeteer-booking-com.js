@@ -134,7 +134,7 @@ async function sendPriceReport(results) {
   
 }
 
-/ Function to check hotel price for a specific date
+// Function to check hotel price for a specific date
 async function checkPrice(browser, checkInDate, checkOutDate) {
   const page = await browser.newPage();
   
@@ -228,7 +228,7 @@ async function checkPrice(browser, checkInDate, checkOutDate) {
 }
 
 
-/ Main monitoring function
+// Main monitoring function
 async function monitorHotelPrices() {
   console.log('🏨 Starting hotel price monitoring...');
   console.log(`📍 Hotel: InterContinental Shenzhen WECC by IHG`);
