@@ -1,7 +1,7 @@
 
 
 const puppeteer = require('puppeteer');
-const nodemailer = require('nodemailer');
+//const nodemailer = require('nodemailer');
 import { Resend } from 'resend';
 
 // Email configuration
