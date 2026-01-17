@@ -7,7 +7,7 @@ on: [push]
    # - cron: '15 1 * * *'
     
   # Allows manual triggering of the workflow from the GitHub Actions tab
-  workflow_dispatch:
+  #workflow_dispatch:
 
 jobs:
   run-script:
