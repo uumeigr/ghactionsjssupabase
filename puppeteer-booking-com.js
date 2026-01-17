@@ -1,5 +1,6 @@
 
 import puppeteer from 'puppeteer';
+import { setTimeout } from 'node:timers/promises';
 //const nodemailer = require('nodemailer');
 import { Resend } from 'resend';
 
@@ -13,7 +14,7 @@ const EMAIL_CONFIG = {
   }
 };
 
-const TARGET_EMAIL = 'szjme@outlook.com';
+const TARGET_EMAIL = 'jadeseala@gmail.com';
 const HOTEL_URL = 'https://www.booking.com/hotel/cn/intercontinental-shenzhen.html';
 
 
@@ -153,7 +154,8 @@ async function checkPrice(browser, checkInDate, checkOutDate) {
     await page.goto(url, { waitUntil: 'networkidle0', timeout: 60000 });
     
     // Wait a bit for dynamic content to load
-    await page.waitForTimeout(3000);
+    //await page.waitForTimeout(3000);
+	await setTimeout(5000); 
     
     // Take screenshot for debugging (optional - comment out if not needed)
     // await page.screenshot({ path: `screenshot-${checkIn}.png` });
