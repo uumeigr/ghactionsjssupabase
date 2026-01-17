@@ -23,7 +23,7 @@ async function sendPriceReport(results) {
   // Generate table rows
   const tableRows = results.map(r => {
     const status = r.error ? '❌ Error' : (r.price ? `USD ${r.price}` : '⚠️ N/A');
-    const rowClass = r.price && r.price <= 200 ? 'highlight' : '';
+    const rowClass = r.price && r.price >= 200 ? 'highlight' : '';
     return `
       <tr class="${rowClass}">
         <td>${r.date}</td>
@@ -91,7 +91,7 @@ async function sendPriceReport(results) {
                 <div>USD ${maxPrice}</div>
               </div>
               <div class="summary-item">
-                <div class="summary-label">Days ≤ USD 200:</div>
+                <div class="summary-label">Days >= USD 200:</div>
                 <div>${underTarget} days</div>
               </div>
             </div>
@@ -246,7 +246,7 @@ async function monitorHotelPrices() {
   const today = new Date();
   
   try {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 90; i++) {
       const checkInDate = new Date(today);
       checkInDate.setDate(today.getDate() + i);
       
@@ -257,7 +257,7 @@ async function monitorHotelPrices() {
       results.push(result);
       
       // Add delay between requests to avoid being blocked
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 10000));
     }
   } finally {
     await browser.close();
