@@ -1,6 +1,6 @@
 
 import puppeteer from 'puppeteer';
-import { setTimeout } from 'node:timers/promises';
+//import { setTimeout } from 'node:timers/promises';
 //const nodemailer = require('nodemailer');
 import { Resend } from 'resend';
 
@@ -155,7 +155,7 @@ async function checkPrice(browser, checkInDate, checkOutDate) {
     
     // Wait a bit for dynamic content to load
     //await page.waitForTimeout(3000);
-	await setTimeout(5000); 
+	//await setTimeout(5000); 
     
     // Take screenshot for debugging (optional - comment out if not needed)
     // await page.screenshot({ path: `screenshot-${checkIn}.png` });
