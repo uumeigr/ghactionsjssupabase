@@ -40,7 +40,7 @@ async function sendPriceReport(results) {
     : 'N/A';
   const minPrice = validPrices.length > 0 ? Math.min(...validPrices) : 'N/A';
   const maxPrice = validPrices.length > 0 ? Math.max(...validPrices) : 'N/A';
-  const underTarget = validPrices.filter(p => p <= 200).length;
+  const underTarget = validPrices.filter(p => p >= 200).length;
 
 
   const mailOptions = {
@@ -70,7 +70,7 @@ async function sendPriceReport(results) {
       </head>
       <body>
         <div class="container">
-          <h1>🏨 Hotel Price Report</h1>
+          <h1>Hotel Price Report</h1>
           <p><strong>Hotel:</strong> InterContinental Shenzhen WECC by IHG</p>
           <p><strong>Room Type:</strong> Classic Room</p>
           <p><strong>Report Generated:</strong> ${new Date().toLocaleString()}</p>
@@ -111,7 +111,7 @@ async function sendPriceReport(results) {
           </table>
 
           <div class="footer">
-            <p>💡 Highlighted rows indicate prices at or below USD 200</p>
+            <p>💡 Highlighted rows indicate prices at or above USD 200</p>
             <p>🔗 <a href="${HOTEL_URL}">View hotel on Booking.com</a></p>
           </div>
         </div>
