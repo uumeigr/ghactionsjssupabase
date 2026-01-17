@@ -1,5 +1,5 @@
 name: Puppeteer Booking Com IC Shenzhen
-on:[push]
+on: [push]
   #schedule:
     # Run every morning at 7:15am NZT | UTC + 8 + 5hrs earlier
     # CRON syntax: minute hour day_of_month month day_of_week
