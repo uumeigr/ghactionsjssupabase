@@ -33,7 +33,8 @@ console.log("Breakpoint -------------------------------------003----------------
 // Pings an endpoint to keep the project active
 async function keepAlive() {
   try {
-    const resp = await supabase.from('keep_alive_ping').select().eq('id', 1);
+    //const resp = await supabase.from('keep_alive_ping').select().eq('id', 1);
+    const resp = await supabase.from('keep_alive_ping').select version();
     console.log(resp);
     //Check the timestamp, select statement and from node in Supabase dashboard /left bar/ Logs, the query is exectued successfully
     //Breakpoint -------------------------------------002------------------------------ set by J10
