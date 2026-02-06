@@ -2,7 +2,7 @@ name: Python to keep supabase alive
 
 on:
   # Schedule the workflow to run every day at 00:00 UTC
-  schedule:
+  #schedule:
     # Use POSIX cron syntax (minute hour day_of_month month day_of_week)
     - cron: '0 0 1 * *'
 
