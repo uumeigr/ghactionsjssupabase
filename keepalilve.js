@@ -25,7 +25,7 @@ console.log("Breakpoint -------------------------------------002----------------
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 const currentDate = new Date();
 const zulutime = currentDate.toISOString();
-timestamptz = zulutime.split("\.")[0]+"+00:00";
+const timestamptz = zulutime.split("\.")[0]+"+00:00";
 console.log(timestamptz);
 //const zulutime = "2026-02-10T04:30:45.516Z";
 //const timestamp = zulutime.split("\.")[0]+"+00:00";
