@@ -40,9 +40,8 @@ async function keepAlive() {
     //const resp = await supabase.from('keep_alive_ping').select().eq('id', 1);
     const resp = await supabase.from('keep_alive_ping').select();
     console.log(resp);
-    console.log("new record No. is --- " + resp.data.length + 1);
-    console.log("new record Time Stamp is --- " + timestamptz);
-    console.log(resp.data);
+    console.log("total records number is --- " + resp.data.length);
+    console.log("Now Add a new record with TimeStamp --- " + timestamptz);
     await supabase.from('keep_alive_ping').insert([{ id: resp.data.length + 1, last_ping: timestamptz }]);
     
     //Check the timestamp, select statement and from node in Supabase dashboard /left bar/ Logs, the query is exectued successfully
