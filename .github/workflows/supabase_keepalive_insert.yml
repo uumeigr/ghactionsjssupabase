@@ -1,4 +1,4 @@
-name: Keep Supabase Alive - insert
+name: insert Supabase Alive
 
 on:
   schedule:
