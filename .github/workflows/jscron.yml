@@ -1,4 +1,4 @@
-name: Keep Supabase Alive w GhAcitions & JS
+name: Supabase Alive w GhAcitions & JS
 
 on:
   schedule:
