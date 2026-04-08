@@ -1,4 +1,4 @@
-name: Puppeteer Booking Com IC Shenzhen
+name: Puppeteer Booking Com IC Shenzhen 20260408
 # on: [push]
 on:
   schedule:
