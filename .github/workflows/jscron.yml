@@ -17,13 +17,13 @@ jobs:
     steps:
       - name: Checkout repository
         # Action to pull the code from the repository into the runner
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
         # Action to install the Node.js environment required to run the script
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20' # Specify the Node.js version you need
+          node-version: '24' # Specify the Node.js version you need
           
       - run: npm cache clean --force
       # - run: rm package-lock.json
