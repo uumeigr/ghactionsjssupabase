@@ -1,4 +1,4 @@
-name: Supabase keepaliveinsert 20260508
+name: Supabase keep alive insert 20260508
 
 on:
   schedule:
