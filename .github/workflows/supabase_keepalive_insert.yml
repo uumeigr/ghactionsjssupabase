@@ -1,4 +1,4 @@
-name: insert Supabase Alive 20260408
+name: Supabase insert keepalive.js 20260508
 
 on:
   schedule:
