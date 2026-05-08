@@ -1,4 +1,4 @@
-name: Supabase insert keepalive.js 20260508
+name: Supabase keepaliveinsert 20260508
 
 on:
   schedule:
@@ -34,7 +34,7 @@ jobs:
       # run: npm install
       # After running the command, check your package.json file to ensure node-fetch is listed under dependencies
         
-      - name: Run keepalive.js
+      - name: Run keepaliveinsert.js
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SECRET: ${{ secrets.SUPABASE_SECRET }}
