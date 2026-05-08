@@ -1,4 +1,4 @@
-name: Supabase Alive jscron 20260508
+name: Supabase keep alive 20260508
 
 on:
   schedule:
